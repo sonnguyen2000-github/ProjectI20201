@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="740.0" prefWidth="1190.0" style="-fx-background-color: beige;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManageColumnController">
+    <bottom>
+        <FlowPane alignment="CENTER" prefHeight="163.0" prefWidth="1190.0" style="-fx-background-color: #afaaaa;" BorderPane.alignment="CENTER">
+            <children>
+            <Button fx:id="addBtn" mnemonicParsing="false" onMouseClicked="#add" text="THÊM THÔNG TIN">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </FlowPane.margin>
+            </Button>
+            </children>
+        </FlowPane>
+    </bottom>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="106.39999694824219" minHeight="10.0" prefHeight="106.39999694824219" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="160.79997596740722" minHeight="10.0" prefHeight="121.60000305175781" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="160.79997596740722" minHeight="10.0" prefHeight="28.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="160.79997596740722" minHeight="10.0" prefHeight="69.0" valignment="CENTER" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+                <ListView fx:id="lsColumn" onMouseClicked="#delete" orientation="HORIZONTAL" prefHeight="122.0" prefWidth="1181.0" style="-fx-background-color: beige;" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+                </ListView>
+                <ListView fx:id="ccColumn" onMouseClicked="#delete" orientation="HORIZONTAL" prefHeight="43.0" prefWidth="469.0" style="-fx-background-color: beige;" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+                </ListView>
+                <Label text="Chứng chỉ">
+                    <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                    </padding>
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+                </Label>
+                <Label text="Công tác" GridPane.rowIndex="2">
+                    <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                    </padding>
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+                </Label>
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>

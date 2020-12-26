@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane prefHeight="375.0" prefWidth="637.0" style="-fx-background-color: beige;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ResultController">
+   <bottom>
+      <FlowPane alignment="CENTER" prefHeight="74.0" prefWidth="638.0" style="-fx-background-color: #afaaaa;" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="cancelBtn" mnemonicParsing="false" onMouseClicked="#cancel" style="-fx-background-radius: 10;" text="CANCEL">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </FlowPane>
+   </bottom>
+   <center>
+      <ListView fx:id="result" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #afaaaa; -fx-border-radius: 10;" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+      </ListView>
+   </center>
+   <top>
+      <Label text="KẾT QUẢ" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+   </top>
+</BorderPane>
