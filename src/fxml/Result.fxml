@@ -8,21 +8,23 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane prefHeight="375.0" prefWidth="637.0" style="-fx-background-color: beige;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ResultController">
    <bottom>
-      <FlowPane alignment="CENTER" prefHeight="74.0" prefWidth="638.0" style="-fx-background-color: #afaaaa;" BorderPane.alignment="CENTER">
+      <FlowPane alignment="CENTER" prefHeight="29.0" prefWidth="638.0" style="-fx-background-color: #afaaaa;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="cancelBtn" mnemonicParsing="false" onMouseClicked="#cancel" style="-fx-background-radius: 10;" text="CANCEL">
+            <Button fx:id="cancelBtn" mnemonicParsing="false" onMouseClicked="#cancel" style="-fx-background-radius: 10;" text="QUAY LẠI">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
+               <FlowPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </FlowPane.margin>
             </Button>
          </children>
       </FlowPane>
    </bottom>
    <center>
-      <ListView fx:id="result" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #afaaaa; -fx-border-radius: 10;" BorderPane.alignment="CENTER">
+      <ListView fx:id="resultList" onMouseClicked="#editList" prefHeight="266.0" prefWidth="617.0" style="-fx-border-color: #afaaaa; -fx-background-color: beige; -fx-border-radius: 10; -fx-background-radius: 10;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </BorderPane.margin>
@@ -31,8 +33,11 @@
    <top>
       <Label text="KẾT QUẢ" BorderPane.alignment="CENTER">
          <font>
-            <Font name="System Bold" size="16.0" />
+            <Font name="Consolas Bold" size="18.0" />
          </font>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
       </Label>
    </top>
 </BorderPane>

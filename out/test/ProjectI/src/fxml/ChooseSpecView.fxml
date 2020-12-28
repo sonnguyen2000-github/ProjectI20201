@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="695.0" prefWidth="770.0" style="-fx-background-color: beige;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ChooseSpecViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="695.0" prefWidth="770.0" style="-fx-background-color: beige;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChooseSpecViewController">
     <bottom>
         <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="56.0" prefWidth="770.0" style="-fx-background-color: #afaaaa;" BorderPane.alignment="CENTER">
          <children>

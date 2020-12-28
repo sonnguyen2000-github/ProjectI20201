@@ -76,14 +76,14 @@ public class SearchFrameController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
         try{
-            /**
+            /*
              * Database Connection
              * */
             postgresqlConn = new PostgresqlConn();
             Connection connection = postgresqlConn.getConnection();
             Statement statement = connection
                     .createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            /**
+            /*
              *  set Boxes
              * */
             ResultSet rs = statement.executeQuery("SELECT distinct chuyennganh\n" + "FROM public.\"ChuyenMon\";");
@@ -129,17 +129,17 @@ public class SearchFrameController implements Initializable{
             String[] vitri = {"Assistant", "Manager", "Leader", "Tester", "Business"};
             tempList.addAll(vitri);
             vitriBox.setItems(tempList);
-            /**
+            /*
              * end of box initialization
              * */
             //
-            /**
+            /*
              * cclist initialization
              * */
             choosenCC = FXCollections.observableArrayList();
             cclist.setItems(choosenCC);
             // end of ccList initialization
-            /**
+            /*
              *  Table setup
              * */
             idColumn.setCellValueFactory(new PropertyValueFactory<>("ID"));
@@ -151,13 +151,13 @@ public class SearchFrameController implements Initializable{
             infoTable.setItems(tableInfo);
             //end of table setup
             //
-            /**
+            /*
              *  person list set up
              * */
             choosenPerson = FXCollections.observableArrayList();
             personlist.setItems(choosenPerson);
             //
-            /**
+            /*
              * choosenCN,CM set up
              * */
             choosenCN = FXCollections.observableArrayList();
@@ -210,9 +210,9 @@ public class SearchFrameController implements Initializable{
             Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             BufferedReader reader = new BufferedReader(new FileReader(
                     "E:\\OneDrive - Hanoi University of Science and Technology\\20201\\Project I\\createtemp1.sql"));
-            StringBuffer temp = new StringBuffer();
+            StringBuilder temp = new StringBuilder();
             while(reader.ready()){
-                temp.append(reader.readLine() + "\n");
+                temp.append(reader.readLine()).append("\n");
             }
             System.out.println("-----------------------\n\t" + temp.toString() + "\n------------------");
             stmt.executeUpdate(temp.toString());
@@ -425,7 +425,7 @@ public class SearchFrameController implements Initializable{
         try{
             Connection connection;
             Statement stmt;
-            StringBuffer query = new StringBuffer();
+            StringBuilder query = new StringBuilder();
             //
             query.append(selectRelation());
             query.append(appendCN());
@@ -465,7 +465,7 @@ public class SearchFrameController implements Initializable{
         if(choosenCN.isEmpty()){
             return "";
         }else{
-            StringBuffer buffer = new StringBuffer();
+            StringBuilder buffer = new StringBuilder();
             boolean isTn = tnCheck.isSelected();
             //
             buffer.append("\nAND ");
@@ -477,7 +477,7 @@ public class SearchFrameController implements Initializable{
                 //
                 if(isTn){
                     buffer.append("p1.id in (select distinct main.\"ID\"\n" + "from public.\"BangCap\" main\n" +
-                                  "where totnghiep and chuyennganh like '%" + cn + "%') ");
+                                  "where totnghiep and chuyennganh like '%").append(cn).append("%') ");
                 }else{
                     buffer.append("p1.chuyennganh like '%");
                     buffer.append(cn);
@@ -504,7 +504,7 @@ public class SearchFrameController implements Initializable{
         if(choosenCM.isEmpty()){
             return "";
         }else{
-            StringBuffer buffer = new StringBuffer();
+            StringBuilder buffer = new StringBuilder();
             //
             buffer.append("\nAND ");// AND (...or...)
             buffer.append("\n( ");
@@ -537,7 +537,7 @@ public class SearchFrameController implements Initializable{
         if(tdBox.getValue() == null || tdBox.getValue().isEmpty()){
             return "";
         }else{
-            StringBuffer buffer = new StringBuffer();
+            StringBuilder buffer = new StringBuilder();
             String td = tdBox.getValue();
             //
             buffer.append("\nAND ");
@@ -573,10 +573,10 @@ public class SearchFrameController implements Initializable{
                     return "";
                 }
                 int now = LocalDate.now().getYear();
-                StringBuffer buffer = new StringBuffer();
+                StringBuilder buffer = new StringBuilder();
                 //
                 buffer.append("\nAND ");
-                buffer.append(now + " + 1 - ");
+                buffer.append(now).append(" + 1 - ");
                 //
                 buffer.append("(");
                 //
@@ -621,7 +621,7 @@ public class SearchFrameController implements Initializable{
                 if(kntt == 0){
                     return "";
                 }
-                StringBuffer buffer = new StringBuffer();
+                StringBuilder buffer = new StringBuilder();
                 //
                 buffer.append("\nAND ");
                 //
@@ -680,7 +680,7 @@ public class SearchFrameController implements Initializable{
         }else{
             try{
                 String vt = vitriBox.getValue();
-                StringBuffer buffer = new StringBuffer();
+                StringBuilder buffer = new StringBuilder();
                 //
                 buffer.append("\nAND ");
                 //
@@ -721,7 +721,7 @@ public class SearchFrameController implements Initializable{
         if(choosenCC.isEmpty()){
             return "";
         }else{
-            StringBuffer buffer = new StringBuffer();
+            StringBuilder buffer = new StringBuilder();
             for(Pair<ChungChi, Boolean> pair : cclist.getItems()){
                 buffer.append("\nAND ");
                 ChungChi cc = pair.getKey();
@@ -868,10 +868,16 @@ public class SearchFrameController implements Initializable{
     }
 
     @FXML
-    public void print(MouseEvent event){
+    public void export(MouseEvent event){
         if(event.getButton() == MouseButton.PRIMARY){
             setResults(choosenPerson);
+            close();
         }
+    }
+
+    public void close(){
+        Stage stage = (Stage) infoTable.getScene().getWindow();
+        stage.close();
     }
 
     @FXML

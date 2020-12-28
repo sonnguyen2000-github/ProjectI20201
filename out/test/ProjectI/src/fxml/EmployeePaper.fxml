@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="740.0" prefWidth="1190.0" style="-fx-background-color: beige;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.EmployeePaperController">
+<BorderPane prefHeight="740.0" prefWidth="1190.0" style="-fx-background-color: beige;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeePaperController">
     <top>
         <FlowPane alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="321.0" prefWidth="2109.0" BorderPane.alignment="CENTER">
             <children>

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="338.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.EditEmployeeController">
+<BorderPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="338.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditEmployeeController">
     <left>
        <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="306.0" prefWidth="150.0" BorderPane.alignment="CENTER">
           <Label prefHeight="26.0" text="MÃ SỐ NHÂN VIÊN">

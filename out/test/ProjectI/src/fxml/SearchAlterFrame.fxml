@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<BorderPane prefHeight="330.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.SearchAlterFrameController">
+<BorderPane prefHeight="330.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SearchAlterFrameController">
    <top>
       <GridPane maxWidth="-Infinity" prefHeight="219.0" prefWidth="450.0" BorderPane.alignment="CENTER">
         <columnConstraints>

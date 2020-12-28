@@ -191,7 +191,7 @@
                         <Insets right="10.0" />
                      </FlowPane.margin>
                   </Button>
-                  <Button fx:id="printBtn" mnemonicParsing="false" onMouseClicked="#print" prefHeight="26.0" prefWidth="112.0" text="Xuất thông tin">
+                  <Button fx:id="printBtn" mnemonicParsing="false" onMouseClicked="#export" prefHeight="26.0" prefWidth="112.0" text="Xuất thông tin">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

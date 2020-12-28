@@ -25,6 +25,8 @@ public class SearchViewController implements Initializable{
     @FXML
     Button searchBtn;
     @FXML
+    Button exportBtn;
+    @FXML
     Button addBtn;
     @FXML
     Button saveBtn;
@@ -142,27 +144,34 @@ public class SearchViewController implements Initializable{
             if(object instanceof Pair<?, ?>){
                 if(((Pair<?, ?>) object).getKey() instanceof String){
                     String key = ((Pair<String, ?>) object).getKey();
-                    if(key.equals("chuyennganh")){
-                        Pair<String, Boolean> pair = ((Pair<String, Pair<String, Boolean>>) object).getValue();
-                        if(pair.getValue()){
-                            controller.chooseCN(pair.getKey());
-                        }else{
-                            controller.choosenCN.add(pair.getKey());
+                    switch(key){
+                        case "chuyennganh":{
+                            Pair<String, Boolean> pair = ((Pair<String, Pair<String, Boolean>>) object).getValue();
+                            if(pair.getValue()){
+                                controller.chooseCN(pair.getKey());
+                            }else{
+                                controller.choosenCN.add(pair.getKey());
+                            }
+                            controller.tnCheck.setSelected(true);
+                            break;
                         }
-                        controller.tnCheck.setSelected(true);
-                    }else if(key.equals("chuyenmon")){
-                        Pair<String, Boolean> pair = ((Pair<String, Pair<String, Boolean>>) object).getValue();
-                        if(pair.getValue()){
-                            controller.setChoosenCM(pair.getKey());
-                        }else{
-                            controller.choosenCM.add(pair.getKey());
+                        case "chuyenmon":{
+                            Pair<String, Boolean> pair = ((Pair<String, Pair<String, Boolean>>) object).getValue();
+                            if(pair.getValue()){
+                                controller.setChoosenCM(pair.getKey());
+                            }else{
+                                controller.choosenCM.add(pair.getKey());
+                            }
+                            break;
                         }
-                    }else if(key.equals("vitri")){
-                        String vitri_ = ((Pair<String, String>) object).getValue();
-                        controller.vitriBox.setValue(vitri_);
-                    }else if(key.equals("trinhdo")){
-                        String trinhdo_ = ((Pair<String, String>) object).getValue();
-                        controller.tdBox.setValue(trinhdo_);
+                        case "vitri":
+                            String vitri_ = ((Pair<String, String>) object).getValue();
+                            controller.vitriBox.setValue(vitri_);
+                            break;
+                        case "trinhdo":
+                            String trinhdo_ = ((Pair<String, String>) object).getValue();
+                            controller.tdBox.setValue(trinhdo_);
+                            break;
                     }
                 }else if(((Pair<?, ?>) object).getKey() instanceof ChungChi){
                     controller.cclist.getItems().add((Pair<ChungChi, Boolean>) object);
@@ -180,11 +189,10 @@ public class SearchViewController implements Initializable{
         if(event.getButton() == MouseButton.SECONDARY){
             ContextMenu contextMenu = tableView.getContextMenu();
             contextMenu.show(tableView, event.getSceneX(), event.getSceneY());
-        }else{
-            if(event.getButton() == MouseButton.PRIMARY){
-                setTxtArea(temp);
-            }
+        }else if(event.getButton() == MouseButton.PRIMARY){
+            setTxtArea(temp);
         }
+
     }
 
     @FXML
@@ -254,7 +262,7 @@ public class SearchViewController implements Initializable{
                 stage.setScene(new Scene(loader.load()));
                 stage.setResizable(false);
                 ResultController controller = loader.getController();
-                controller.setResult(temp.getResults());
+                controller.setResultList(temp.getResults());
                 stage.show();
             }catch(Exception e){
                 e.printStackTrace();
@@ -272,7 +280,17 @@ public class SearchViewController implements Initializable{
         kntt_txt.setText("");
     }
 
-    public class SearchField{
+    @FXML
+    public void export(MouseEvent event){
+        if(event.getButton() != MouseButton.PRIMARY){
+            return;
+        }
+        /*
+         * more
+         * */
+    }
+
+    public static class SearchField{
         private int stt, sl, kn, kntt;
         private String vitri;
         private ObservableList<Object> chuyenmon;

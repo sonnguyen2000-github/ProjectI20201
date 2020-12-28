@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxWidth="-Infinity" prefHeight="212.0" prefWidth="253.0" style="-fx-background-color: beige;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.AlterColumnController">
+<BorderPane maxWidth="-Infinity" prefHeight="212.0" prefWidth="253.0" style="-fx-background-color: beige;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AlterColumnController">
     <left>
         <FlowPane alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="166.0" prefWidth="95.0" BorderPane.alignment="CENTER">
             <Label text="Tên mục">

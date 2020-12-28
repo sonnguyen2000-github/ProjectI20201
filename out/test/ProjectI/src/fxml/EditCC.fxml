@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxWidth="-Infinity" prefHeight="437.0" prefWidth="301.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.EditCCController">
+<BorderPane maxWidth="-Infinity" prefHeight="437.0" prefWidth="301.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditCCController">
    <right>
       <FlowPane maxWidth="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="346.0" prefWidth="166.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
