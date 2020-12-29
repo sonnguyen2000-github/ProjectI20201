@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -13,7 +14,6 @@ import javafx.stage.Stage;
 import main.Person;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class A11Controller implements Initializable{
@@ -28,7 +28,7 @@ public class A11Controller implements Initializable{
     @FXML
     TableColumn<A11, String> vitriCol;
 
-    public void setResult(List<SearchViewController.SearchField> result){
+    public void setResult(ObservableList<SearchViewController.SearchField> result){
         int stt_ = 0;
         for(SearchViewController.SearchField searchField : result){
             for(Person person : searchField.getResults()){
@@ -66,12 +66,6 @@ public class A11Controller implements Initializable{
         private String vitri;
 
         public A11(){
-        }
-
-        public A11(int stt, String hoten, String vitri){
-            this.stt = stt;
-            this.hoten = hoten;
-            this.vitri = vitri;
         }
 
         public int getStt(){

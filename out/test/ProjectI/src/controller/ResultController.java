@@ -1,7 +1,9 @@
 package controller;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -11,9 +13,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import main.Person;
 
+import java.net.URL;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
-public class ResultController{
+public class ResultController implements Initializable{
     @FXML
     Button cancelBtn;
     @FXML
@@ -47,6 +51,12 @@ public class ResultController{
     }
 
     public void setResultList(ObservableList<Person> resultList){
-        this.resultList.setItems(resultList);
+        this.resultList.getItems().clear();
+        this.resultList.getItems().addAll(resultList);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle){
+        resultList.setItems(FXCollections.observableArrayList());
     }
 }

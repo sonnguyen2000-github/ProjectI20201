@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import main.LichSu;
 import main.PostgresqlConn;
+import org.controlsfx.control.textfield.TextFields;
 
 import java.io.IOException;
 import java.net.URL;
@@ -191,5 +194,28 @@ public class EditLSController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
         this.postgresql = new PostgresqlConn();
+        try{
+            Connection connection = postgresql.getConnection();
+            Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            String query = "SELECT distinct nhom, chuyennganh, chuyenmon\n" + "FROM public.\"ChuyenMon\"\n";
+            ResultSet rs = stmt.executeQuery(query);
+            ObservableList<String> cnList = FXCollections.observableArrayList();
+            ObservableList<String> cmList = FXCollections.observableArrayList();
+            String cn_, cm_;
+            while(rs.next()){
+                cn_ = rs.getString(2);
+                cm_ = rs.getString(3);
+                if(!cnList.contains(cn_)){
+                    cnList.add(cn_);
+                }
+                if(!cmList.contains(cm_)){
+                    cmList.add(cm_);
+                }
+            }
+            TextFields.bindAutoCompletion(cnda, cnList);
+            TextFields.bindAutoCompletion(cmda, cmList);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }

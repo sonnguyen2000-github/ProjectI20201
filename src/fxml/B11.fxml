@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="464.0" prefWidth="1222.0" style="-fx-background-color: beige;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.B11Controller">
+   <bottom>
+      <FlowPane alignment="CENTER" prefHeight="58.0" prefWidth="966.0" style="-fx-background-color: #afaaaa;" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="cancelBtn" mnemonicParsing="false" onMouseClicked="#cancel" style="-fx-background-radius: 15;" text="BACK">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </FlowPane>
+   </bottom>
+   <center>
+      <TableView fx:id="b11Table" prefHeight="339.0" prefWidth="1047.0" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn editable="false" prefWidth="75.0" resizable="false" sortable="false" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" text="Thông tin nhân sự">
+               <columns>
+                  <TableColumn fx:id="ttns_sttCol" editable="false" prefWidth="75.0" sortable="false" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" text="STT" />
+                  <TableColumn fx:id="ttns_hotenCol" editable="false" prefWidth="75.0" sortable="false" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" text="Tên" />
+                  <TableColumn fx:id="ttns_idCol" editable="false" prefWidth="75.0" sortable="false" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" text="Số định danh" />
+                  <TableColumn fx:id="ttns_vitriCol" editable="false" prefWidth="75.0" sortable="false" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" text="Vị trí" />
+                  <TableColumn fx:id="ttns_dobCol" editable="false" prefWidth="75.0" sortable="false" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" text="Ngày sinh" />
+                  <TableColumn fx:id="ttns_trinhdoCol" editable="false" prefWidth="64.0" sortable="false" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" text="Trình độ" />
+               </columns>
+            </TableColumn>
+          <TableColumn editable="false" prefWidth="75.0" resizable="false" sortable="false" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" text="Công việc hiện tại">
+               <columns>
+                  <TableColumn fx:id="cvht_hotenCol" editable="false" prefWidth="75.0" sortable="false" style="-fx-border-color: #afaaaa; -fx-background-color: beige;" text="  Tên người &#10;    sử dụng &#10;   lao động" />
+                  <TableColumn fx:id="cvht_diachiCol" editable="false" prefWidth="75.0" sortable="false" style="-fx-border-color: #afaaaa; -fx-background-color: beige;" text="Địa chỉ" />
+                  <TableColumn fx:id="cvht_chucdanhCol" editable="false" prefWidth="75.0" sortable="false" style="-fx-border-color: #afaaaa; -fx-background-color: beige;" text="Chức danh" />
+                  <TableColumn fx:id="cvht_soNamLamViecCol" editable="false" prefWidth="75.0" sortable="false" style="-fx-border-color: #afaaaa; -fx-background-color: beige;" text=" Số năm &#10;làm việc" />
+                  <TableColumn fx:id="cvht_ngLienLacCol" editable="false" prefWidth="75.0" sortable="false" style="-fx-border-color: #afaaaa; -fx-background-color: beige;" text="Người liên lạc" />
+                  <TableColumn fx:id="cvht_dt_fax_emailCol" editable="false" prefWidth="75.0" sortable="false" style="-fx-border-color: #afaaaa; -fx-background-color: beige;" text="Điện thoại&#10;/Fax/Email" />
+               </columns>
+            </TableColumn>
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+         </BorderPane.margin>
+      </TableView>
+   </center>
+   <top>
+      <Label text="BIỂU MẪU 11B" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Consolas Bold" size="16.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets top="10.0" />
+         </BorderPane.margin>
+      </Label>
+   </top>
+</BorderPane>

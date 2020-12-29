@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import main.ChungChi;
 import main.PostgresqlConn;
+import org.controlsfx.control.textfield.TextFields;
 
 import java.io.IOException;
 import java.net.URL;
@@ -57,7 +60,8 @@ public class EditCCController implements Initializable{
         if(event.getButton() == MouseButton.SECONDARY){
             return;
         }
-        if(!tencc.getText().isEmpty() && !cosocap.getText().isEmpty() && !cn.getText().isEmpty() && !nam.getText().isEmpty()){
+        if(!tencc.getText().isEmpty() && !cosocap.getText().isEmpty() && !cn.getText().isEmpty() &&
+           !nam.getText().isEmpty()){
             try{
                 String tencc_old = addNew ? "" : chungChi.getTencc();
                 String ten = tencc.getText();
@@ -70,10 +74,12 @@ public class EditCCController implements Initializable{
                 int hethan = hsd.getText().isEmpty() ? 0 : Integer.parseInt(hsd.getText());
                 //
                 Connection connection = postgresql.getConnection();
-                Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
-                        ResultSet.CONCUR_UPDATABLE);
+                Statement stmt = connection
+                        .createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
                 ResultSet rs = stmt.executeQuery(
-                        "SELECT \"ID\", ten, totnghiep, cosocap, chuyennganh, chuyenmon, minhchung, nam, hsd, level\n" + "FROM public.\"BangCap\"\n" + "WHERE \"ID\" like '%" + id + "%'\n" + "AND ten like '%" + tencc_old + "%';");
+                        "SELECT \"ID\", ten, totnghiep, cosocap, chuyennganh, chuyenmon, minhchung, nam, hsd, level\n" +
+                        "FROM public.\"BangCap\"\n" + "WHERE \"ID\" like '%" + id + "%'\n" + "AND ten like '%" +
+                        tencc_old + "%';");
                 if(addNew){
                     rs.moveToInsertRow();
                     rs.updateString(1, id);
@@ -114,6 +120,43 @@ public class EditCCController implements Initializable{
         }
     }
 
+    public void setCC(String person, ChungChi chungChi) throws SQLException{
+        this.id = person;
+        this.chungChi = chungChi;
+        //
+        Connection connection = postgresql.getConnection();
+        Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+        ResultSet rs = stmt.executeQuery(
+                "SELECT \"ID\", ten, totnghiep, cosocap, chuyennganh, chuyenmon, minhchung, nam, hsd, level\n" +
+                "FROM public.\"BangCap\"\n" + "WHERE \"ID\" like '%" + id + "%'\n" + "AND ten like '%" +
+                chungChi.getTencc() + "%';");
+        if(rs.next()){
+            tencc.setText(rs.getString(2));
+            totnghiep.setSelected(rs.getBoolean(3));
+            mucdo.setText(rs.getString(10));
+            cosocap.setText(rs.getString(4));
+            cn.setText(rs.getString(5));
+            cm.setText(rs.getString(6));
+            nam.setText(rs.getInt(8) + "");
+            hsd.setText(rs.getInt(9) + "");
+        }
+        connection.close();
+    }
+
+    public void setAddNew(boolean addNew){
+        this.addNew = addNew;
+        this.attachBtn.setDisable(addNew);
+    }
+
+    @FXML
+    public void cancel(MouseEvent event){
+        if(event.getButton() == MouseButton.SECONDARY){
+            return;
+        }
+        Stage stage = (Stage) cancelBtn.getScene().getWindow();
+        stage.close();
+    }
+
     @FXML
     public void attach(MouseEvent event) throws IOException{
         if(event.getButton() == MouseButton.SECONDARY){
@@ -149,47 +192,35 @@ public class EditCCController implements Initializable{
         }
     }
 
-    @FXML
-    public void cancel(MouseEvent event){
-        if(event.getButton() == MouseButton.SECONDARY){
-            return;
-        }
-        Stage stage = (Stage) cancelBtn.getScene().getWindow();
-        stage.close();
-    }
-
-    public void setAddNew(boolean addNew){
-        this.addNew = addNew;
-        this.attachBtn.setDisable(addNew);
-    }
-
     public void setPerson(String id){
         this.id = id;
-    }
-
-    public void setCC(String person, ChungChi chungChi) throws SQLException{
-        this.id = person;
-        this.chungChi = chungChi;
-        //
-        Connection connection = postgresql.getConnection();
-        Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        ResultSet rs = stmt.executeQuery(
-                "SELECT \"ID\", ten, totnghiep, cosocap, chuyennganh, chuyenmon, minhchung, nam, hsd, level\n" + "FROM public.\"BangCap\"\n" + "WHERE \"ID\" like '%" + id + "%'\n" + "AND ten like '%" + chungChi.getTencc() + "%';");
-        if(rs.next()){
-            tencc.setText(rs.getString(2));
-            totnghiep.setSelected(rs.getBoolean(3));
-            mucdo.setText(rs.getString(10));
-            cosocap.setText(rs.getString(4));
-            cn.setText(rs.getString(5));
-            cm.setText(rs.getString(6));
-            nam.setText(rs.getInt(8) + "");
-            hsd.setText(rs.getInt(9) + "");
-        }
-        connection.close();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
         this.postgresql = new PostgresqlConn();
+        try{
+            Connection connection = postgresql.getConnection();
+            Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            String query = "SELECT distinct nhom, chuyennganh, chuyenmon\n" + "FROM public.\"ChuyenMon\"\n";
+            ResultSet rs = stmt.executeQuery(query);
+            ObservableList<String> cnList = FXCollections.observableArrayList();
+            ObservableList<String> cmList = FXCollections.observableArrayList();
+            String cn_, cm_;
+            while(rs.next()){
+                cn_ = rs.getString(2);
+                cm_ = rs.getString(3);
+                if(!cnList.contains(cn_)){
+                    cnList.add(cn_);
+                }
+                if(!cmList.contains(cm_)){
+                    cmList.add(cm_);
+                }
+            }
+            TextFields.bindAutoCompletion(cn, cnList);
+            TextFields.bindAutoCompletion(cm, cmList);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }

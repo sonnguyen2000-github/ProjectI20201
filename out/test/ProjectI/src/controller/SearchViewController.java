@@ -68,6 +68,9 @@ public class SearchViewController implements Initializable{
         temp.setChuyenmon(FXCollections.observableArrayList());
         temp.setKn(0);
         temp.setKntt(0);
+
+        temp.setResults(FXCollections.observableArrayList());
+
         tableView.getItems().add(temp);
         tableView.getSelectionModel().select(temp);
         setTxtArea(temp);
@@ -117,7 +120,6 @@ public class SearchViewController implements Initializable{
         if(event.getButton() != MouseButton.PRIMARY){
             return;
         }
-        //more
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SearchFrame.fxml"));
             Stage stage = new Stage();
@@ -131,7 +133,8 @@ public class SearchViewController implements Initializable{
             controller.search(event);
             stage.setOnHidden(windowEvent -> {
                 SearchField searchField = tableView.getSelectionModel().getSelectedItem();
-                searchField.setResults(controller.getResults());
+                searchField.getResults().clear();
+                searchField.getResults().addAll(controller.getResults());
             });
             stage.show();
         }catch(Exception e){
@@ -189,11 +192,10 @@ public class SearchViewController implements Initializable{
         if(event.getButton() == MouseButton.SECONDARY){
             ContextMenu contextMenu = tableView.getContextMenu();
             contextMenu.show(tableView, event.getSceneX(), event.getSceneY());
-        }else{
-            if(event.getButton() == MouseButton.PRIMARY){
-                setTxtArea(temp);
-            }
+        }else if(event.getButton() == MouseButton.PRIMARY){
+            setTxtArea(temp);
         }
+
     }
 
     @FXML
@@ -289,6 +291,51 @@ public class SearchViewController implements Initializable{
         /*
          * more
          * */
+        if(tableView.getItems().isEmpty()){
+            return;
+        }
+        for(SearchField searchField : tableView.getItems()){
+            if(searchField.getResults().isEmpty()){
+                Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setTitle("");
+                alert.setHeaderText("TÌM KIẾM SỐ " + searchField.getStt() + " KHÔNG CÓ KẾT QUẢ.");
+                alert.setContentText("Bạn có muốn thực hiện tìm kiếm lại ?");
+                Optional<ButtonType> optional = alert.showAndWait();
+                if(optional.isPresent() && optional.get() == ButtonType.OK){
+                    return;
+                }
+            }
+        }
+        /*
+        *  11A form
+        * */
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/A11.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("");
+            stage.setScene(new Scene(loader.load()));
+            stage.setResizable(false);
+            A11Controller controller = loader.getController();
+            controller.setResult(tableView.getItems());
+            stage.show();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        /*
+        *  11B form
+        * */
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/B11.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("");
+            stage.setScene(new Scene(loader.load()));
+            stage.setResizable(false);
+            B11Controller controller = loader.getController();
+            controller.setResult(tableView.getItems());
+            stage.show();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     public static class SearchField{

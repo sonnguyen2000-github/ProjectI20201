@@ -11,15 +11,16 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class PostgresqlConn{
-    protected String homeDirectory = "E:/OneDrive - Hanoi University of Science and Technology/Documents/Eclipse Projects/ProjectI/src/data/";
     protected static Connection connection;
-    protected JSONObject jsonObject;
-    protected JSONParser parser;
     protected static String url;
     protected static Map<String, String> login;
+    protected String homeDirectory
+            = "E:/OneDrive - Hanoi University of Science and Technology/Documents/Eclipse Projects/ProjectI/src/data/";
+    protected JSONObject jsonObject;
+    protected JSONParser parser;
 
     public PostgresqlConn(){
-        /***/
+        /**/
         login = new LinkedHashMap<>();
         parser = new JSONParser();
         try{
@@ -33,7 +34,7 @@ public class PostgresqlConn{
         }catch(Exception e){
             e.printStackTrace();
         }
-        /** url */
+        /* url */
         url = "jdbc:postgresql://" + login.get("hostname") + ":" + login.get("port") + "/" + login.get("database");
     }
 
