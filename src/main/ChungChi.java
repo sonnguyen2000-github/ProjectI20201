@@ -4,6 +4,9 @@ public class ChungChi{
     protected String tencc, cosocap, minhchung, cn, cm, mucdo;
     protected int nam, hsd;
 
+    public ChungChi(){
+    }
+
     public ChungChi(String tencc, String mucdo, String cosocap, String minhchung, String cn, String cm, int nam,
                     int hsd){
         this.tencc = tencc;
@@ -25,8 +28,24 @@ public class ChungChi{
         return tencc;
     }
 
+    public void setTencc(String tencc){
+        this.tencc = tencc;
+    }
+
+    public String getMinhchung(){
+        return minhchung;
+    }
+
+    public void setMinhchung(String minhchung){
+        this.minhchung = minhchung;
+    }
+
     public String getCosocap(){
         return cosocap;
+    }
+
+    public void setCosocap(String cosocap){
+        this.cosocap = cosocap;
     }
 
     public String getCn(){
@@ -49,8 +68,16 @@ public class ChungChi{
         return nam;
     }
 
+    public void setNam(int nam){
+        this.nam = nam;
+    }
+
     public int getHsd(){
         return hsd;
+    }
+
+    public void setHsd(int hsd){
+        this.hsd = hsd;
     }
 
     public String getMucdo(){

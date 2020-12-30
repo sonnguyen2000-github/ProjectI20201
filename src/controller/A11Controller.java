@@ -18,8 +18,6 @@ import java.util.ResourceBundle;
 
 public class A11Controller implements Initializable{
     @FXML
-    Button cancelBtn;
-    @FXML
     TableView<A11> a11Table;
     @FXML
     TableColumn<A11, Integer> sttCol;
@@ -40,15 +38,6 @@ public class A11Controller implements Initializable{
                 a11Table.getItems().add(a11);
             }
         }
-    }
-
-    @FXML
-    public void cancel(MouseEvent event){
-        if(event.getButton() != MouseButton.PRIMARY){
-            return;
-        }
-        Stage stage = (Stage) cancelBtn.getScene().getWindow();
-        stage.close();
     }
 
     @Override

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.SubScene?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="522.0" prefWidth="1300.0" style="-fx-background-color: beige;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Forms11Controller">
+   <center>
+      <TabPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab fx:id="a11Tab" closable="false" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" text="11A">
+               <content>
+                  <SubScene height="348.0" width="969.0">
+                    <root>
+                      <Region />
+                    </root>
+                  </SubScene>
+               </content>
+               <content>
+                  <SubScene fx:id="a11Sub" height="365.0" width="1279.0">
+                    <root>
+                      <Region />
+                    </root>
+                  </SubScene>
+               </content>
+          </Tab>
+          <Tab fx:id="b11Tab" closable="false" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" text="11B">
+               <content>
+                  <SubScene fx:id="b11Sub" height="365.0" width="1279.0">
+                    <root>
+                      <Region />
+                    </root>
+                  </SubScene>
+               </content>
+          </Tab>
+            <Tab fx:id="c11Tab" closable="false" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" text="11C">
+               <content>
+                  <SubScene fx:id="c11Sub" height="365.0" width="1279.0">
+                    <root>
+                      <Region />
+                    </root>
+                  </SubScene>
+               </content>
+            </Tab>
+        </tabs>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+      </TabPane>
+   </center>
+   <top>
+      <Label text="BIỂU MẪU BÊN DỰ THẦU" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Consolas Bold" size="18.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+      </Label>
+   </top>
+   <bottom>
+      <FlowPane alignment="CENTER" prefHeight="59.0" prefWidth="1010.0" style="-fx-background-color: #afaaaa;" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="cancelBtn" mnemonicParsing="false" onMouseClicked="#cancel" style="-fx-background-radius: 15;" text="BACK">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </FlowPane>
+   </bottom>
+</BorderPane>

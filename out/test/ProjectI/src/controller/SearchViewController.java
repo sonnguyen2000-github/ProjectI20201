@@ -307,30 +307,15 @@ public class SearchViewController implements Initializable{
             }
         }
         /*
-        *  11A form
-        * */
+         *  11A, B, C forms
+         * */
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/A11.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Forms11.fxml"));
             Stage stage = new Stage();
             stage.setTitle("");
             stage.setScene(new Scene(loader.load()));
             stage.setResizable(false);
-            A11Controller controller = loader.getController();
-            controller.setResult(tableView.getItems());
-            stage.show();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        /*
-        *  11B form
-        * */
-        try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/B11.fxml"));
-            Stage stage = new Stage();
-            stage.setTitle("");
-            stage.setScene(new Scene(loader.load()));
-            stage.setResizable(false);
-            B11Controller controller = loader.getController();
+            Forms11Controller controller = loader.getController();
             controller.setResult(tableView.getItems());
             stage.show();
         }catch(Exception e){

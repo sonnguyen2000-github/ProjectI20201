@@ -32,17 +32,6 @@ public class B11Controller implements Initializable{
     TableColumn<B11, String> cvht_hotenCol, cvht_diachiCol, cvht_chucdanhCol, cvht_ngLienLacCol, cvht_dt_fax_emailCol;
     @FXML
     TableColumn<B11, Integer> cvht_soNamLamViecCol;
-    @FXML
-    Button cancelBtn;
-
-    @FXML
-    public void cancel(MouseEvent event){
-        if(event.getButton() != MouseButton.PRIMARY){
-            return;
-        }
-        Stage stage = (Stage) cancelBtn.getScene().getWindow();
-        stage.close();
-    }
 
     public void setResult(ObservableList<SearchViewController.SearchField> result) throws SQLException{
         int stt_ = 0;
@@ -84,6 +73,7 @@ public class B11Controller implements Initializable{
                 b11Table.getItems().add(b11);
             }
         }
+        connection.close();
     }
 
     @Override

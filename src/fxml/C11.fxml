@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="400.0" prefWidth="843.0" style="-fx-background-color: beige;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.C11Controller">
+   <center>
+      <TableView fx:id="c11Table" prefHeight="284.0" prefWidth="822.0" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="sttCol" editable="false" prefWidth="75.0" sortable="false" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" text="STT" />
+          <TableColumn fx:id="hotenCol" editable="false" prefWidth="75.0" sortable="false" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" text="Tên nhân sự chủ chôt" />
+            <TableColumn fx:id="kncmCol" editable="false" prefWidth="75.0" sortable="false" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" text="Kinh nghiệm chuyên môn" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+         </BorderPane.margin>
+      </TableView>
+   </center>
+   <top>
+      <Label text="BIỂU MẪU 11C" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Consolas Bold" size="16.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets top="10.0" />
+         </BorderPane.margin>
+      </Label>
+   </top>
+</BorderPane>
