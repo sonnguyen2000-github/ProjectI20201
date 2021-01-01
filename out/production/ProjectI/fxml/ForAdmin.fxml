@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="800.0" prefWidth="1410.0" style="-fx-background-color: #123270;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ForAdminController">
+<BorderPane prefHeight="864.0" prefWidth="1410.0" style="-fx-background-color: #123270;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ForAdminController">
     <center>
         <SubScene fx:id="subScene" height="740.0" width="1190.0" BorderPane.alignment="CENTER">
             <root>
@@ -31,7 +31,7 @@
             </effect>
             <ImageView fx:id="icon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" translateY="2.0">
                 <FlowPane.margin>
-                    <Insets />
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                 </FlowPane.margin>
                 <effect>
                     <Blend />

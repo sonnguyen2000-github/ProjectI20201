@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="740.0" prefWidth="1190.0" style="-fx-background-color: beige;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InfoAllController">
+<BorderPane prefHeight="740.0" prefWidth="1190.0" style="-fx-background-color: beige;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.InfoAllController">
    <bottom>
       <FlowPane alignment="CENTER" prefHeight="136.0" prefWidth="1190.0" style="-fx-background-color: #afaaaa;" BorderPane.alignment="CENTER">
          <children>
