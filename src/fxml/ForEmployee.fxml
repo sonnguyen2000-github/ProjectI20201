@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #1d3c78;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ForEmployeeController">
+<BorderPane prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #1d3c78;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ForEmployeeController">
    <center>
       <SubScene fx:id="subScene" height="740.0" width="1190.0" BorderPane.alignment="CENTER">
         <root>

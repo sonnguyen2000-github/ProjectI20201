@@ -86,7 +86,7 @@ public class EditEmployeeController implements Initializable{
             if(adding){
                 rs.insertRow();
             }else{
-                rs.updateRow();
+                 rs.updateRow();
             }
             //
             rs = stmt.executeQuery(
