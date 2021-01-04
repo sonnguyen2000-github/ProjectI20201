@@ -12,5 +12,6 @@
     <orderEntry type="library" name="postgresql-42.2.16" level="project" />
     <orderEntry type="library" name="controlsfx" level="project" />
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="faker_jar" level="project" />
   </component>
 </module>

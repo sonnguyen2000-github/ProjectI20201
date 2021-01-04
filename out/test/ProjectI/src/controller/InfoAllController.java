@@ -33,7 +33,6 @@ public class InfoAllController implements Initializable{
     @FXML
     Button refreshBtn, addNewBtn;
 
-    //
     @FXML
     public void refresh(MouseEvent event) throws SQLException{
         if(event.getButton() == MouseButton.SECONDARY){
@@ -42,7 +41,6 @@ public class InfoAllController implements Initializable{
         doRefresh();
     }
 
-    //
     public void doRefresh() throws SQLException{
         mainList = FXCollections.observableArrayList();
         infoTable.setItems(mainList);

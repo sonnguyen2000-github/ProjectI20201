@@ -116,8 +116,9 @@ public class SpecificationController implements Initializable{
         }
         try{
             if(!rs.isFirst()){
-                rs.previous();
-                set();
+                if(rs.previous()){
+                    set();
+                }
             }
         }catch(SQLException throwables){
             throwables.printStackTrace();
@@ -131,8 +132,9 @@ public class SpecificationController implements Initializable{
         }
         try{
             if(!rs.isLast()){
-                rs.next();
-                set();
+                if(rs.next()){
+                    set();
+                }
             }
         }catch(SQLException throwables){
             throwables.printStackTrace();
@@ -140,9 +142,16 @@ public class SpecificationController implements Initializable{
     }
 
     @FXML
-    public void delete(MouseEvent event) throws SQLException{
+    public void delete(MouseEvent event){
         if(event.getButton() != MouseButton.PRIMARY){
             return;
+        }
+        try{
+            if(rs.isBeforeFirst()){
+                return;
+            }
+        }catch(SQLException throwables){
+            throwables.printStackTrace();
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("DELETE CONFIRMATION");
@@ -150,9 +159,13 @@ public class SpecificationController implements Initializable{
         alert.setContentText("");
         Optional<ButtonType> option = alert.showAndWait();
         if(option.isPresent() && option.get().equals(ButtonType.OK)){
-            rs.deleteRow();
-            rs.last();
-            set();
+            try{
+                rs.deleteRow();
+                rs.last();
+                set();
+            }catch(SQLException throwables){
+                throwables.printStackTrace();
+            }
         }
     }
 
@@ -189,9 +202,7 @@ public class SpecificationController implements Initializable{
     public void init(String group, String name, String specific) throws SQLException{
         connection = postgresql.getConnection();
         stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        String query = "SELECT distinct nhom, chuyennganh, chuyenmon\n" + "FROM public.\"ChuyenMon\"\n" +
-                       "WHERE nhom like '%" + group + "%' and chuyennganh like '%" + name + "%' and chuyenmon like '%" +
-                       specific + "%';";
+        String query = "SELECT distinct nhom, chuyennganh, chuyenmon\n" + "FROM public.\"ChuyenMon\"\n" + "WHERE nhom like '%" + group + "%' and chuyennganh like '%" + name + "%' and chuyenmon like '%" + specific + "%';";
         rs = stmt.executeQuery(query);
         ObservableList<String> groupList = FXCollections.observableArrayList();
         ObservableList<String> nameList = FXCollections.observableArrayList();
