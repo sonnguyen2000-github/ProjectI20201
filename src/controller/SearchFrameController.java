@@ -580,13 +580,13 @@ public class SearchFrameController implements Initializable{
                 //
                 buffer.append("(");
                 //
-                buffer.append("select distinct min(bangcap.nam)\nfrom public.\"BangCap\" bangcap");
+                buffer.append("select min(bangcap.nam)\nfrom public.\"BangCap\" bangcap");
                 buffer.append("\nwhere bangcap.\"ID\" = p1.id");
                 buffer.append("\nand totnghiep");
-                buffer.append("\nand bangcap.chuyennganh in ");
+                buffer.append("\nand");
                 //
-                buffer.append("\n(");
-                buffer.append("\nselect distinct chuyennganh\n" + "from public.\"BangCap\"\n" + "where false ");
+                buffer.append("\n( false");
+                //buffer.append("\nselect distinct chuyennganh\n" + "from public.\"BangCap\"\n" + "where false ");
                 for(String cn : choosenCN){
                     buffer.append("\nor chuyennganh like '%");
                     buffer.append(cn);
@@ -628,25 +628,26 @@ public class SearchFrameController implements Initializable{
                 buffer.append("(");
                 //
                 buffer.append(
-                        "select distinct max(lichsu.\"to\" - lichsu.\"from\" + 1)\nfrom public.\"LichSuCongTac\" lichsu");
+                        "select SUM(lichsu.\"to\" - lichsu.\"from\" + 1)\nfrom public.\"LichSuCongTac\" lichsu");
                 buffer.append("\nwhere lichsu.\"ID\" = p1.id");
                 if(!choosenCN.isEmpty()){
-                    buffer.append("\nand lichsu.chuyennganh in ");
+                    buffer.append("\nand");
                     //
-                    buffer.append("\n(");
-                    buffer.append("\nselect distinct chuyennganh\n" + "from public.\"BangCap\"\n" + "where false ");
+                    buffer.append("\n( false");
+                    //buffer.append("\nselect distinct chuyennganh\n" + "from public.\"BangCap\"\n" + "where false ");
                     for(String cn : choosenCN){
                         buffer.append("\nor chuyennganh like '%");
                         buffer.append(cn);
                         buffer.append("%' ");
                     }
+                    //
                     buffer.append(") ");
                 }
                 if(!choosenCM.isEmpty()){
-                    buffer.append("\nand lichsu.chuyenmon in ");
+                    buffer.append("\nand");
                     //
-                    buffer.append("\n( ");
-                    buffer.append("\nselect distinct chuyenmon\n" + "from public.\"BangCap\"\n" + "where false ");
+                    buffer.append("\n( false");
+                    //buffer.append("\nselect distinct chuyenmon\n" + "from public.\"BangCap\"\n" + "where false ");
                     for(String cm : choosenCM){
                         buffer.append("\nor chuyenmon like '%");
                         buffer.append(cm);
