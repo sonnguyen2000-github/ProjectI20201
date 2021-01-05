@@ -41,7 +41,7 @@ public class Test{
         }catch(SQLException throwables){
             throwables.printStackTrace();
         }*/
-        try{
+        /*try{
             PostgresqlConn postgresqlConn = new PostgresqlConn();
             Connection connection = postgresqlConn.getConnection();
             Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
@@ -67,7 +67,7 @@ public class Test{
 
                 rs1.insertRow();
             }
-            /*while(rs.next()){
+            *//*while(rs.next()){
                 rs2.moveToInsertRow();
 
                 rs2.updateString(1, rs.getString(1));
@@ -81,10 +81,10 @@ public class Test{
                 rs2.updateString(9, "");// minh chung
 
                 rs2.insertRow();
-            }*/
+            }*//*
 
         }catch(Exception e){
             e.printStackTrace();
-        }
+        }*/
     }
 }

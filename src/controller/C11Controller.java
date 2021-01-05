@@ -40,7 +40,7 @@ public class C11Controller implements Initializable{
                 c11.setHoten(person.getHoten());
                 c11.setKncm("");
                 rs = stmt.executeQuery(
-                        "SELECT \"ID\", tenduan, chuyennganh, \"from\", congty, chuyenmon, vitri, \"to\", minhchung\n" +
+                        "SELECT \"ID\", tenduan, chuyennganh, \"from\", mact, chuyenmon, vitri, \"to\", minhchung\n" +
                         "FROM public.\"LichSuCongTac\"\n" + "WHERE \"ID\" like '%" + person.getID() + "%';");
                 while(rs.next()){
                     LichSu lichSu = new LichSu();
