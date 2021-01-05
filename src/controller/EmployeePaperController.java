@@ -122,7 +122,7 @@ public class EmployeePaperController implements Initializable{
             }
             //
             rs = stmt.executeQuery(
-                    "SELECT distinct \"ID\", tenduan, chuyennganh, \"from\", congty, chuyenmon, vitri, \"to\"\n" +
+                    "SELECT distinct \"ID\", tenduan, chuyennganh, \"from\", mact, chuyenmon, vitri, \"to\"\n" +
                     "FROM public.\"LichSuCongTac\"\n" + "WHERE \"ID\" like '%" + id + "%';");
             while(rs.next()){
                 tenda = rs.getString(2);

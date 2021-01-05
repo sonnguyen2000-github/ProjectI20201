@@ -94,7 +94,7 @@ public class EditLSController implements Initializable{
                 Statement stmt = connection
                         .createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
                 ResultSet rs = stmt.executeQuery(
-                        "SELECT \"ID\", tenduan, chuyennganh, \"from\", congty, chuyenmon, vitri, \"to\", minhchung\n" +
+                        "SELECT \"ID\", tenduan, chuyennganh, \"from\", mact, chuyenmon, vitri, \"to\", minhchung\n" +
                         "FROM public.\"LichSuCongTac\"\n" + "WHERE \"ID\" like '%" + id + "%' \n" +
                         "AND tenduan like '%" + tenda_old + "%'\n" + "AND vitri like '%" + vitrict_old + "%';");
                 if(addNew){
@@ -143,7 +143,7 @@ public class EditLSController implements Initializable{
         Connection connection = postgresql.getConnection();
         Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
         ResultSet rs = stmt.executeQuery(
-                "SELECT \"ID\", tenduan, chuyennganh, \"from\", congty, chuyenmon, vitri, \"to\", minhchung\n" +
+                "SELECT \"ID\", tenduan, chuyennganh, \"from\", mact, chuyenmon, vitri, \"to\", minhchung\n" +
                 "FROM public.\"LichSuCongTac\"\n" + "WHERE \"ID\" like '%" + id + "%' \n" + "AND tenduan like '%" +
                 lichSu.getTenda() + "%'\n" + "AND vitri like '%" + lichSu.getVitri() + "%';");
         if(rs.next()){
