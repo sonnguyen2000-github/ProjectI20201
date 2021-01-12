@@ -13,10 +13,8 @@ import main.Person;
 import main.PostgresqlConn;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class C11Controller implements Initializable{
@@ -25,7 +23,7 @@ public class C11Controller implements Initializable{
     @FXML
     TableColumn<C11, Integer> sttCol;
     @FXML
-    TableColumn<C11, String> hotenCol, kncmCol;
+    TableColumn<C11, String> hotenCol, fromCol, toCol, kncmCol;
 
     public void setResult(ObservableList<SearchViewController.SearchField> result) throws SQLException{
         int stt_ = 0;
@@ -40,16 +38,21 @@ public class C11Controller implements Initializable{
                 c11.setHoten(person.getHoten());
                 c11.setKncm("");
                 rs = stmt.executeQuery(
-                        "SELECT \"ID\", tenduan, chuyennganh, \"from\", mact, chuyenmon, vitri, \"to\", minhchung\n" +
-                        "FROM public.\"LichSuCongTac\"\n" + "WHERE \"ID\" like '%" + person.getID() + "%';");
+                        "SELECT \"ID\", tenduan, chuyennganh, \"from\", mact, chuyenmon, vitri, \"to\", minhchung\n" + "FROM public.\"LichSuCongTac\"\n" + "WHERE \"ID\" like '%" + person.getID() + "%';");
                 while(rs.next()){
                     LichSu lichSu = new LichSu();
                     lichSu.setTenda(rs.getString(2));
                     lichSu.setVitri(rs.getString(7));
                     lichSu.setCn(rs.getString(3));
+                    lichSu.setFrom(rs.getInt(4));
+                    lichSu.setTo(rs.getInt(8));
+
+                    c11.setTungay(Date.valueOf(
+                            lichSu.getFrom() + "-" + new Random().nextInt(12) + "-" + new Random().nextInt(
+                                    30)).toString());
                     c11.setKncm(c11.getKncm() + "\n" + lichSu);
                 }
-                rs = stmt.executeQuery(
+                /*rs = stmt.executeQuery(
                         "SELECT \"ID\", ten, totnghiep, cosocap, chuyennganh, chuyenmon, minhchung, nam, hsd, level\n" +
                         "FROM public.\"BangCap\"\n" + "WHERE \"ID\" like '%" + person.getID() + "%';");
                 while(rs.next()){
@@ -57,7 +60,7 @@ public class C11Controller implements Initializable{
                     chungChi.setTencc(rs.getString(2));
                     chungChi.setMucdo(rs.getString(10));
                     c11.setKncm(c11.getKncm() + "\n" + chungChi);
-                }
+                }*/
                 c11Table.getItems().add(c11);
             }
         }
@@ -70,6 +73,8 @@ public class C11Controller implements Initializable{
 
         sttCol.setCellValueFactory(new PropertyValueFactory<>("stt"));
         hotenCol.setCellValueFactory(new PropertyValueFactory<>("hoten"));
+        fromCol.setCellValueFactory(new PropertyValueFactory<>("tungay"));
+        toCol.setCellValueFactory(new PropertyValueFactory<>("denngay"));
         kncmCol.setCellValueFactory(new PropertyValueFactory<>("kncm"));
     }
 
@@ -77,6 +82,7 @@ public class C11Controller implements Initializable{
     public static class C11{
         private int stt;
         private String hoten;
+        private String tungay, denngay;
         private String kncm;
 
         public C11(){
@@ -96,6 +102,22 @@ public class C11Controller implements Initializable{
 
         public void setHoten(String hoten){
             this.hoten = hoten;
+        }
+
+        public String getTungay(){
+            return tungay;
+        }
+
+        public void setTungay(String tungay){
+            this.tungay = tungay;
+        }
+
+        public String getDenngay(){
+            return denngay;
+        }
+
+        public void setDenngay(String denngay){
+            this.denngay = denngay;
         }
 
         public String getKncm(){

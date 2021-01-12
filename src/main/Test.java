@@ -1,5 +1,15 @@
 package main;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -86,5 +96,41 @@ public class Test{
         }catch(Exception e){
             e.printStackTrace();
         }*/
+
+        Document document = new Document();
+        try{
+            PdfWriter.getInstance(document, new FileOutputStream("E:\\OneDrive - Hanoi University of Science and Technology\\Documents\\Eclipse Projects\\ProjectI\\src\\main\\temp.pdf"));
+        }catch(DocumentException|FileNotFoundException e){
+            e.printStackTrace();
+        }
+        document.open();
+
+        PdfPTable table = new PdfPTable(3);
+        PdfPCell c1 = new PdfPCell(new Phrase("Table Header 1"));
+        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(c1);
+
+        c1 = new PdfPCell(new Phrase("Table Header 2"));
+        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(c1);
+
+        c1 = new PdfPCell(new Phrase("Table Header 3"));
+        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(c1);
+        table.setHeaderRows(1);
+
+        table.addCell("1.0");
+        table.addCell("1.1");
+        table.addCell("1.2");
+        table.addCell("2.1");
+        table.addCell("2.2");
+        table.addCell("2.3");
+
+        try{
+            document.add(table);
+        }catch(DocumentException e){
+            e.printStackTrace();
+        }
+        document.close();
     }
 }

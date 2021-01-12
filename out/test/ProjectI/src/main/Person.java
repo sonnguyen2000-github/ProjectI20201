@@ -38,7 +38,7 @@ public class Person{
 
     @Override
     public String toString(){
-        return getID() + "\t" + String.format("%-25s", getHoten()) + "\t\t\t\t" + String.format("%-20s", getTrinhdo()) +
+        return getID() + "\t\t" + String.format("%-25s", getHoten()) + "\t\t\t\t" + String.format("%-20s", getTrinhdo()) +
                "\t\t\t" + String.format("%-20s", getChucvu()) + "\t\t\t" + getMahdld();
     }
 
