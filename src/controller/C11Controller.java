@@ -34,9 +34,13 @@ public class C11Controller implements Initializable{
         for(SearchViewController.SearchField searchField : result){
             for(Person person : searchField.getResults()){
                 C11 c11 = new C11();
+
                 c11.setStt(++stt_);
                 c11.setHoten(person.getHoten());
+                c11.setTungay("");
+                c11.setDenngay("");
                 c11.setKncm("");
+
                 rs = stmt.executeQuery(
                         "SELECT \"ID\", tenduan, chuyennganh, \"from\", mact, chuyenmon, vitri, \"to\", minhchung\n" + "FROM public.\"LichSuCongTac\"\n" + "WHERE \"ID\" like '%" + person.getID() + "%';");
                 while(rs.next()){
@@ -47,20 +51,16 @@ public class C11Controller implements Initializable{
                     lichSu.setFrom(rs.getInt(4));
                     lichSu.setTo(rs.getInt(8));
 
-                    c11.setTungay(Date.valueOf(
-                            lichSu.getFrom() + "-" + new Random().nextInt(12) + "-" + new Random().nextInt(
-                                    30)).toString());
+                    int month = new Random().nextInt(9) + 1;
+                    c11.setTungay(c11.getTungay() + "\n" + lichSu.getFrom() + "-" + month + "-" + (new Random().nextInt(
+                            30) + 1));
+                    c11.setDenngay(
+                            c11.getDenngay() + "\n" + lichSu.getFrom() + "-" + (month + month % 2 == 0 ? 2 : 3) + "-" + (new Random().nextInt(
+                                    30) + 1));
+
                     c11.setKncm(c11.getKncm() + "\n" + lichSu);
                 }
-                /*rs = stmt.executeQuery(
-                        "SELECT \"ID\", ten, totnghiep, cosocap, chuyennganh, chuyenmon, minhchung, nam, hsd, level\n" +
-                        "FROM public.\"BangCap\"\n" + "WHERE \"ID\" like '%" + person.getID() + "%';");
-                while(rs.next()){
-                    ChungChi chungChi = new ChungChi();
-                    chungChi.setTencc(rs.getString(2));
-                    chungChi.setMucdo(rs.getString(10));
-                    c11.setKncm(c11.getKncm() + "\n" + chungChi);
-                }*/
+
                 c11Table.getItems().add(c11);
             }
         }

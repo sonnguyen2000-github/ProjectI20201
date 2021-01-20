@@ -9,12 +9,12 @@
 
 <BorderPane prefHeight="400.0" prefWidth="843.0" style="-fx-background-color: beige;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.C11Controller">
    <center>
-      <TableView fx:id="c11Table" prefHeight="284.0" prefWidth="822.0" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" BorderPane.alignment="CENTER">
+      <TableView fx:id="c11Table" prefHeight="284.0" prefWidth="822.0" style="-fx-background-color: beige; -fx-border-color: #afaaaa; -fx-focus-color: black; -fx-accent: black; -fx-selection-bar: black;" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="sttCol" editable="false" prefWidth="75.0" sortable="false" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" text="STT" />
           <TableColumn fx:id="hotenCol" editable="false" prefWidth="75.0" sortable="false" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" text="Tên nhân sự chủ chôt" />
-            <TableColumn prefWidth="75.0" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" text="Từ ngày" />
-            <TableColumn prefWidth="75.0" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" text="Đến ngày" />
+            <TableColumn fx:id="fromCol" prefWidth="75.0" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" text="Từ ngày" />
+            <TableColumn fx:id="toCol" prefWidth="75.0" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" text="Đến ngày" />
             <TableColumn fx:id="kncmCol" editable="false" prefWidth="75.0" sortable="false" style="-fx-background-color: beige; -fx-border-color: #afaaaa;" text="Công ty/Dự án/Chức vụ/&#10;Kinh nghiệm chuyên môn &#10;và quản lý có liên quan" />
         </columns>
          <columnResizePolicy>
