@@ -81,8 +81,8 @@ public class SearchFrameController implements Initializable{
              * */
             postgresqlConn = new PostgresqlConn();
             Connection connection = postgresqlConn.getConnection();
-            Statement statement = connection
-                    .createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
             /*
              *  set Boxes
              * */
@@ -114,8 +114,8 @@ public class SearchFrameController implements Initializable{
             // tdBox done
             // ccBox
             ccBox.setItems(FXCollections.observableArrayList());
-            rs = statement.executeQuery("SELECT distinct ten, chuyennganh, chuyenmon\n" + "FROM public.\"BangCap\"\n" +
-                                        "WHERE not totnghiep;");
+            rs = statement.executeQuery(
+                    "SELECT distinct ten, chuyennganh, chuyenmon\n" + "FROM public.\"BangCap\"\n" + "WHERE not totnghiep;");
             ObservableList<ChungChi> temp = ccBox.getItems();
             temp.add(null);
             while(rs.next()){
@@ -186,8 +186,7 @@ public class SearchFrameController implements Initializable{
         try{
             Connection connection = postgresqlConn.getConnection();
             Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            String search_old_temp_view = "select TABLE_NAME\n" + "from INFORMATION_SCHEMA.VIEWS\n" +
-                                          "where TABLE_NAME = 'temp1' ;";
+            String search_old_temp_view = "select TABLE_NAME\n" + "from INFORMATION_SCHEMA.VIEWS\n" + "where TABLE_NAME = 'temp1' ;";
             ResultSet rs = stmt.executeQuery(search_old_temp_view);
             System.out.println("\n--------------------------------\n");
             System.out.println(search_old_temp_view);
@@ -240,11 +239,10 @@ public class SearchFrameController implements Initializable{
         if(cnBox.getValue() != null){//
             try{
                 Connection connection = postgresqlConn.getConnection();
-                Statement stmt = connection
-                        .createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-                ResultSet rs = stmt.executeQuery("SELECT distinct chuyenmon\n" + "FROM public.\"ChuyenMon\"\n" +
-                                                 "WHERE nhom in (select distinct nhom from public.\"ChuyenMon\"\n" +
-                                                 "where chuyennganh like '%" + cnBox.getValue() + "%');");
+                Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                        ResultSet.CONCUR_UPDATABLE);
+                ResultSet rs = stmt.executeQuery(
+                        "SELECT distinct chuyenmon\n" + "FROM public.\"ChuyenMon\"\n" + "WHERE nhom in (select distinct nhom from public.\"ChuyenMon\"\n" + "where chuyennganh like '%" + cnBox.getValue() + "%');");
                 ObservableList<String> tempList = FXCollections.observableArrayList();
                 tempList.add("");
                 while(rs.next()){
@@ -272,10 +270,8 @@ public class SearchFrameController implements Initializable{
         try{
             Connection connection = postgresqlConn.getConnection();
             Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            ResultSet rs = stmt.executeQuery("SELECT distinct chuyennganh\n" + "FROM public.\"ChuyenMon\"\n" +
-                                             "WHERE nhom in (select distinct nhom \n" +
-                                             "\t\t\t  from public.\"ChuyenMon\"\n" +
-                                             "\t\t\t  where chuyennganh like '%" + cn + "%');");
+            ResultSet rs = stmt.executeQuery(
+                    "SELECT distinct chuyennganh\n" + "FROM public.\"ChuyenMon\"\n" + "WHERE nhom in (select distinct nhom \n" + "\t\t\t  from public.\"ChuyenMon\"\n" + "\t\t\t  where chuyennganh like '%" + cn + "%');");
             while(rs.next()){
                 String temp = rs.getString(1);
                 if(!choosenCN.contains(temp)){
@@ -302,9 +298,8 @@ public class SearchFrameController implements Initializable{
     public void setChoosenCM(String chuyenmon_) throws SQLException{
         Connection connection = postgresqlConn.getConnection();
         Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        ResultSet rs = stmt.executeQuery("SELECT chuyenmon\n" + "FROM public.\"ChuyenMon\"\n" +
-                                         "WHERE chuyennganh in ( select chuyennganh from public.\"ChuyenMon\"\n" +
-                                         "\t\t\t\t   \twhere chuyenmon like '%" + chuyenmon_ + "%');");
+        ResultSet rs = stmt.executeQuery(
+                "SELECT chuyenmon\n" + "FROM public.\"ChuyenMon\"\n" + "WHERE chuyennganh in ( select chuyennganh from public.\"ChuyenMon\"\n" + "\t\t\t\t   \twhere chuyenmon like '%" + chuyenmon_ + "%');");
         while(rs.next()){
             String temp = rs.getString(1);
             if(!choosenCM.contains(temp)){
@@ -338,7 +333,7 @@ public class SearchFrameController implements Initializable{
             }
             if(event.getClickCount() == 2){
                 try{
-                    editExtraInfo(personlist.getSelectionModel().getSelectedItem(), true);
+                    editExtraInfo(personlist.getSelectionModel().getSelectedItem(), false);
                 }catch(Exception e){
                     e.printStackTrace();
                 }
@@ -370,7 +365,7 @@ public class SearchFrameController implements Initializable{
             }
             Alert dialog = new Alert(AlertType.CONFIRMATION);
             dialog.setTitle("");
-            dialog.setHeaderText("REMOVE FROM LIST ?");
+            dialog.setHeaderText("REMOVE FROM LIST?");
             dialog.setContentText("");
             Optional<ButtonType> rs = dialog.showAndWait();
             if(rs.isPresent() && rs.get() == ButtonType.OK){
@@ -388,11 +383,22 @@ public class SearchFrameController implements Initializable{
         if(event.getButton() == MouseButton.SECONDARY){
             Alert dialog = new Alert(AlertType.CONFIRMATION);
             dialog.setTitle("");
-            dialog.setHeaderText("REMOVE FROM TABLE ?");
+            dialog.setHeaderText("REMOVE FROM TABLE OR ADD TO LIST?");
             dialog.setContentText("");
+
+            ButtonType removeBtn = new ButtonType("REMOVE");
+            ButtonType addBtn = new ButtonType("ADD");
+            ButtonType cancelBtn = new ButtonType("CANCEL");
+
+            dialog.getButtonTypes().clear();
+            dialog.getButtonTypes().addAll(removeBtn, addBtn, cancelBtn);
             Optional<ButtonType> rs = dialog.showAndWait();
-            if(rs.isPresent() && rs.get() == ButtonType.OK){
+            if(rs.isPresent() && rs.get().equals(removeBtn)){
                 table.getItems().remove(table.getSelectionModel().getSelectedIndex());
+            }else{
+                if(rs.isPresent() && rs.get().equals(addBtn)){
+                    personlist.getItems().add(table.getSelectionModel().getSelectedItem());
+                }
             }
         }
         if(event.getButton() == MouseButton.PRIMARY){
@@ -445,7 +451,7 @@ public class SearchFrameController implements Initializable{
             ResultSet rs = stmt.executeQuery(query.toString());
             while(rs.next()){
                 tableInfo.add(new Person(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                                         rs.getString(5)));
+                        rs.getString(5)));
             }
             connection.close();
         }catch(SQLException e){
@@ -455,9 +461,7 @@ public class SearchFrameController implements Initializable{
 
     //
     public String selectRelation(){
-        return "SELECT distinct p1.id, p1.hoten, p1.trinhdo, p1.chucvu, p1.mahdld\n" +
-               "FROM temp1 as p1 left outer join public.\"LichSuCongTac\" as p2\n" +
-               "ON p1.id = p2.\"ID\"\nWHERE TRUE ";
+        return "SELECT distinct p1.id, p1.hoten, p1.trinhdo, p1.chucvu, p1.mahdld\n" + "FROM temp1 as p1 left outer join public.\"LichSuCongTac\" as p2\n" + "ON p1.id = p2.\"ID\"\nWHERE TRUE ";
     }
 
     // append CN
@@ -476,8 +480,9 @@ public class SearchFrameController implements Initializable{
                 buffer.append("\n( ");
                 //
                 if(isTn){
-                    buffer.append("p1.id in (select distinct main.\"ID\"\n" + "from public.\"BangCap\" main\n" +
-                                  "where totnghiep and chuyennganh like '%").append(cn).append("%') ");
+                    buffer.append(
+                            "p1.id in (select distinct main.\"ID\"\n" + "from public.\"BangCap\" main\n" + "where totnghiep and chuyennganh like '%").append(
+                            cn).append("%') ");
                 }else{
                     buffer.append("p1.chuyennganh like '%");
                     buffer.append(cn);
@@ -627,8 +632,7 @@ public class SearchFrameController implements Initializable{
                 //
                 buffer.append("(");
                 //
-                buffer.append(
-                        "select SUM(lichsu.\"to\" - lichsu.\"from\" + 1)\nfrom public.\"LichSuCongTac\" lichsu");
+                buffer.append("select SUM(lichsu.\"to\" - lichsu.\"from\" + 1)\nfrom public.\"LichSuCongTac\" lichsu");
                 buffer.append("\nwhere lichsu.\"ID\" = p1.id");
                 if(!choosenCN.isEmpty()){
                     buffer.append("\nand");
@@ -729,8 +733,8 @@ public class SearchFrameController implements Initializable{
                 if(pair.getValue()){
                     buffer.append("p1.id in ");
                     buffer.append("\n( ");
-                    buffer.append("select distinct main.\"ID\"\n" + "from public.\"BangCap\" main\n" +
-                                  "where chuyennganh like '%");
+                    buffer.append(
+                            "select distinct main.\"ID\"\n" + "from public.\"BangCap\" main\n" + "where chuyennganh like '%");
                     buffer.append(cc.getCn());
                     buffer.append("%' and chuyenmon like '%");
                     buffer.append(cc.getCm());

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="faker_jar">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../Kit/faker_jar" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../../Kit/faker_jar" recursive="false" />
+  </library>
+</component>

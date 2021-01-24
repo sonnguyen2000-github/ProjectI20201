@@ -9,10 +9,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import main.Person;
 import main.PostgresqlConn;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 
-import java.io.FileReader;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
@@ -42,13 +39,14 @@ public class B11Controller implements Initializable{
             for(Person person : searchField.getResults()){
                 B11 b11 = new B11();
                 /* Thong tin nhan su
-                 * */
+                * */
                 b11.setStt(++stt_);
                 b11.setTtns_hoten(person.getHoten());
                 b11.setId(person.getID());
                 b11.setVitri(person.getChucvu());
-                rs = stmt.executeQuery(
-                        "SELECT \"ID\", ngaysinh, diachi, gioitinh, quequan\n" + "FROM public.\"PrivateEmployeeInformation\"\n" + "WHERE \"ID\" like '%" + person.getID() + "%';");
+                rs = stmt.executeQuery("SELECT \"ID\", ngaysinh, diachi, gioitinh, quequan\n" +
+                                       "FROM public.\"PrivateEmployeeInformation\"\n" + "WHERE \"ID\" like '%" +
+                                       person.getID() + "%';");
                 if(rs.next()){
                     b11.setDob(rs.getDate(2));
                 }else{
@@ -56,12 +54,12 @@ public class B11Controller implements Initializable{
                 }
                 b11.setTrinhdo(person.getTrinhdo());
                 /* Cong viec hien tai
-                 * */
+                * */
                 b11.setCvht_hoten(finalCvht.getCvht_hoten());
                 b11.setDiachi(finalCvht.getDiachi());
                 b11.setChucdanh(finalCvht.getChucdanh());
-                rs = stmt.executeQuery(
-                        "SELECT date_part('year', now()) - date_part('year', \"from\") + 1\n" + "FROM public.\"HDLD\"\n" + "WHERE mahdld like '%" + person.getMahdld() + "%';");
+                rs = stmt.executeQuery("SELECT date_part('year', now()) - date_part('year', \"from\") + 1\n" +
+                                       "FROM public.\"HDLD\"\n" + "WHERE mahdld like '%" + person.getMahdld() + "%';");
                 if(rs.next()){
                     b11.setSoNamLamViec(rs.getInt(1));
                 }
@@ -92,18 +90,12 @@ public class B11Controller implements Initializable{
         cvht_ngLienLacCol.setCellValueFactory(new PropertyValueFactory<>("ngLienLac"));
         cvht_dt_fax_emailCol.setCellValueFactory(new PropertyValueFactory<>("dt_fax_email"));
 
-        try{
-            JSONParser parser = new JSONParser();
-            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("E:/OneDrive - Hanoi University of Science and Technology/Documents/Eclipse Projects/ProjectI/src/data/admin.json"));
-
-            finalCvht.setCvht_hoten((String) jsonObject.get("name"));
-            finalCvht.setChucdanh((String) jsonObject.get("position"));
-            finalCvht.setDiachi((String) jsonObject.get("address"));
-            finalCvht.setNgLienLac((String) jsonObject.get("contactor"));
-            finalCvht.setDt_fax_email((String) jsonObject.get("email"));
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        finalCvht.setCvht_hoten("ADMIN");
+        finalCvht.setChucdanh("ADMIN");
+        finalCvht.setChucdanh("ADMIN");
+        finalCvht.setDiachi("Hanoi");
+        finalCvht.setNgLienLac("ADMIN");
+        finalCvht.setDt_fax_email("SON.NH183976@SIS.HUST.EDU.VN");
     }
 
     public static class B11{
@@ -121,8 +113,7 @@ public class B11Controller implements Initializable{
         private String ngLienLac;
         private String dt_fax_email;
 
-        public B11(){
-        }
+        public B11(){}
 
         public int getStt(){
             return stt;
