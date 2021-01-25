@@ -93,7 +93,7 @@ public class AttachmentController implements Initializable{
     public void chooseFile(MouseEvent event){
         if(event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2){
             FileChooser chooser = new FileChooser();
-            chooser.setInitialDirectory(new File("E:\\Document in E\\"));
+            chooser.setInitialDirectory(new File("E:\\Documents\\"));
             File file = chooser.showOpenDialog(confirmBtn.getScene().getWindow());
             if(file != null){
                 fileDirectory.appendText(file.getName() + "; ");

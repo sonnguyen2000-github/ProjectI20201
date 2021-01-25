@@ -3,12 +3,13 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="395.0" prefWidth="288.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditLSController">
+<BorderPane prefHeight="395.0" prefWidth="616.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditLSController">
    <left>
       <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="297.0" prefWidth="110.0" BorderPane.alignment="CENTER">
          <children>
@@ -103,8 +104,51 @@
          </children>
       </FlowPane>
    </left>
-   <right>
-      <FlowPane alignment="TOP_CENTER" prefHeight="297.0" prefWidth="176.0" BorderPane.alignment="CENTER">
+   <bottom>
+      <FlowPane alignment="TOP_CENTER" prefHeight="70.0" prefWidth="616.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="saveBtn" mnemonicParsing="false" onMouseClicked="#save" text="LƯU">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </FlowPane.margin>
+            </Button>
+            <Button fx:id="clearBtn" mnemonicParsing="false" onMouseClicked="#clear" text="XOÁ TẤT CẢ">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </FlowPane.margin>
+            </Button>
+            <Button fx:id="attachBtn" mnemonicParsing="false" onMouseClicked="#attach" text="MINH CHỨNG">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </FlowPane.margin>
+            </Button>
+            <Button fx:id="alterBtn" mnemonicParsing="false" onMouseClicked="#alter" text="BỔ SUNG">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="cancelBtn" mnemonicParsing="false" onMouseClicked="#cancel" text="THOÁT">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </FlowPane.margin>
+            </Button>
+         </children>
+      </FlowPane>
+   </bottom>
+   <center>
+      <FlowPane orientation="VERTICAL" prefHeight="297.0" prefWidth="179.0" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="tenda" prefHeight="26.0" prefWidth="150.0">
                <FlowPane.margin>
@@ -164,48 +208,16 @@
             </TextField>
          </children>
       </FlowPane>
-   </right>
-   <bottom>
-      <FlowPane alignment="TOP_CENTER" prefHeight="98.0" prefWidth="390.0" BorderPane.alignment="CENTER">
+   </center>
+   <right>
+      <FlowPane prefHeight="297.0" prefWidth="344.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="saveBtn" mnemonicParsing="false" onMouseClicked="#save" text="LƯU">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <FlowPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </FlowPane.margin>
-            </Button>
-            <Button fx:id="clearBtn" mnemonicParsing="false" onMouseClicked="#clear" text="XOÁ TẤT CẢ">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <FlowPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </FlowPane.margin>
-            </Button>
-            <Button fx:id="cancelBtn" mnemonicParsing="false" onMouseClicked="#cancel" text="THOÁT">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <FlowPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </FlowPane.margin>
-            </Button>
-            <Button fx:id="attachBtn" mnemonicParsing="false" onMouseClicked="#attach" text="MINH CHỨNG">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <FlowPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </FlowPane.margin>
-            </Button>
-            <Button fx:id="alterBtn" mnemonicParsing="false" onMouseClicked="#alter" text="BỔ SUNG">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
+            <TextArea editable="false" prefHeight="273.0" prefWidth="342.0" text="Hướng dẫn: &#10;- Mục Công ty có thể bỏ trống nếu là dự án cho công ty này&#10;- Vị trí công việc có 5 loại tương đương:&#10;   + &quot;Assistant&quot;: trợ lý, nhân viên&#10;   + &quot;Manager&quot;: quản lý kỹ thuật&#10;   + &quot;Leader&quot;: trưởng nhóm&#10;   + &quot;Tester&quot;: kiểm thử &#10;   + &quot;Business&quot;: kinh doanh, liên quan đến tài chính&#10;" wrapText="true">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </TextArea>
          </children>
       </FlowPane>
-   </bottom>
+   </right>
 </BorderPane>

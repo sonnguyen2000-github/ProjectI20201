@@ -8,9 +8,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.*;
 import javafx.stage.Stage;
+import main.PostgresqlConn;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -24,6 +29,7 @@ public class LoginController implements Initializable{
     TextField user;
     @FXML
     PasswordField password;
+    private PostgresqlConn postgresql;
 
     @FXML
     public void cancel(MouseEvent event){
@@ -95,6 +101,17 @@ public class LoginController implements Initializable{
         alert.showAndWait();
     }
 
+    public boolean checkPassword(String username, String password) throws SQLException{
+        Connection connection = postgresql.getConnection();
+        Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+        ResultSet rs = stmt.executeQuery(
+                "SELECT \"ID\", trinhdo, chucvu, mahdld, hoten, password\n" + "FROM public.\"EmployeeInformation\"\n" + "WHERE \"ID\" like '%" + username + "%' and password like '%" + password + "%';");
+        boolean check = rs.next();
+        connection.close();
+
+        return check;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
         Thread timeThread = new Thread(() -> {
@@ -109,6 +126,7 @@ public class LoginController implements Initializable{
             }
         });
         timeThread.start();
-        //
+
+        postgresql = new PostgresqlConn();
     }
 }

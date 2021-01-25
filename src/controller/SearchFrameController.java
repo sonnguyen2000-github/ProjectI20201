@@ -343,7 +343,6 @@ public class SearchFrameController implements Initializable{
         }
     }
 
-    //
     public void editExtraInfo(Person person, boolean editable) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/ExtraInfo.fxml"));
         Scene extra = new Scene(loader.load());

@@ -1,4 +1,4 @@
-package main;
+package test;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.Font;
@@ -98,7 +98,7 @@ public class Test{
         Document document = new Document();
         try{
             PdfWriter.getInstance(document, new FileOutputStream(
-                    "E:\\OneDrive - Hanoi University of Science and Technology\\Documents\\Eclipse Projects\\ProjectI\\src\\main\\export_pdf.pdf"));
+                    "E:\\OneDrive - Hanoi University of Science and Technology\\Documents\\Eclipse Projects\\ProjectI\\src\\test\\export_pdf.pdf"));
         }catch(DocumentException|FileNotFoundException e){
             e.printStackTrace();
         }

@@ -12,7 +12,7 @@
       <TableView fx:id="c11Table" prefHeight="284.0" prefWidth="822.0" style="-fx-border-color: #afaaaa;" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="sttCol" editable="false" prefWidth="53.60000467300415" sortable="false" style="-fx-border-color: #afaaaa;" text="STT" />
-          <TableColumn fx:id="hotenCol" editable="false" prefWidth="202.4000015258789" sortable="false" style="-fx-border-color: #afaaaa;" text="Tên nhân sự chủ chôt" />
+          <TableColumn fx:id="hotenCol" editable="false" prefWidth="202.4000015258789" sortable="false" style="-fx-border-color: #afaaaa;" text="Tên nhân sự chủ chốt" />
             <TableColumn fx:id="fromCol" editable="false" prefWidth="181.59991455078125" sortable="false" style="-fx-border-color: #afaaaa;" text="Từ ngày" />
             <TableColumn fx:id="toCol" editable="false" prefWidth="187.20004272460938" sortable="false" style="-fx-border-color: #afaaaa;" text="Đến ngày" />
             <TableColumn fx:id="kncmCol" editable="false" prefWidth="197.60003662109375" sortable="false" style="-fx-border-color: #afaaaa;" text="Công ty/Dự án/Chức vụ/&#10;Kinh nghiệm chuyên môn &#10;và quản lý có liên quan" />
