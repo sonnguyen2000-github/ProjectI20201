@@ -22,6 +22,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class EditLSController implements Initializable{
@@ -75,13 +77,12 @@ public class EditLSController implements Initializable{
         if(event.getButton() == MouseButton.SECONDARY){
             return;
         }
-        // more is needed
         if(!tenda.getText().isEmpty() && !vitrict.getText().isEmpty() && !cnda.getText().isEmpty() &&
            !cmda.getText().isEmpty() && !from.getText().isEmpty() && !to.getText().isEmpty()){
             try{
                 String tenda_old = addNew ? "" : lichSu.getTenda();
                 String vitrict_old = addNew ? "" : lichSu.getVitri();
-                //
+
                 String tenda_new = tenda.getText();
                 String ct = congty.getText();
                 String vitrict_new = vitrict.getText();
@@ -139,7 +140,7 @@ public class EditLSController implements Initializable{
     public void setLS(String person, LichSu lichSu) throws SQLException{
         this.id = person;
         this.lichSu = lichSu;
-        // more is needed
+
         Connection connection = postgresql.getConnection();
         Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
         ResultSet rs = stmt.executeQuery(
@@ -201,6 +202,7 @@ public class EditLSController implements Initializable{
             ResultSet rs = stmt.executeQuery(query);
             ObservableList<String> cnList = FXCollections.observableArrayList();
             ObservableList<String> cmList = FXCollections.observableArrayList();
+            String[] vitri_ = {"Assistant", "Manager", "Leader", "Tester", "Business"};
             String cn_, cm_;
             while(rs.next()){
                 cn_ = rs.getString(2);
@@ -214,6 +216,7 @@ public class EditLSController implements Initializable{
             }
             TextFields.bindAutoCompletion(cnda, cnList);
             TextFields.bindAutoCompletion(cmda, cmList);
+            TextFields.bindAutoCompletion(vitrict, vitri_);
         }catch(Exception e){
             e.printStackTrace();
         }

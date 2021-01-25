@@ -63,7 +63,7 @@ public class EmployeePaperController implements Initializable{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/EditCC.fxml"));
         Stage stage = new Stage();
         stage.setTitle("NEW");
-        stage.setScene(new Scene(loader.load(), 301, 437));
+        stage.setScene(new Scene(loader.load()));
         stage.setResizable(false);
         EditCCController ccController = loader.getController();
         ccController.setPerson(id);
@@ -208,7 +208,7 @@ public class EmployeePaperController implements Initializable{
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/EditCC.fxml"));
                     Stage stage = new Stage();
                     stage.setTitle("EDIT");
-                    stage.setScene(new Scene(loader.load(), 301, 437));
+                    stage.setScene(new Scene(loader.load()));
                     stage.setResizable(false);
                     stage.setOnHidden(windowEvent -> setPerson(id));
                     //

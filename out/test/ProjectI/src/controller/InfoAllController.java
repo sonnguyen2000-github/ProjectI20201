@@ -158,14 +158,14 @@ public class InfoAllController implements Initializable{
         MenuItem menuItem1 = new MenuItem("Thông tin");
         menuItem1.setOnAction(event -> {
             try{
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/ExtraInfo.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/EmployeePaper.fxml"));
                 Stage stage = new Stage();
                 stage.setTitle("");
                 stage.setScene(new Scene(loader.load()));
                 stage.setResizable(false);
-                ExtraInfoController controller = loader.getController();
+                EmployeePaperController controller = loader.getController();
                 Person person = infoTable.getSelectionModel().getSelectedItem();
-                controller.setExtraInfo(person, false);
+                controller.setPerson(person.getID());
                 stage.show();
             }catch(Exception e){
                 e.printStackTrace();
