@@ -14,8 +14,6 @@ public class PostgresqlConn{
     protected static Connection connection;
     protected static String url;
     protected static Map<String, String> login;
-    protected String homeDirectory
-            = "E:/OneDrive - Hanoi University of Science and Technology/Documents/Eclipse Projects/ProjectI/src/data/";
     protected JSONObject jsonObject;
     protected JSONParser parser;
 
@@ -24,7 +22,7 @@ public class PostgresqlConn{
         login = new LinkedHashMap<>();
         parser = new JSONParser();
         try{
-            Object object = parser.parse(new FileReader(homeDirectory + "databaselogin.json"));
+            Object object = parser.parse(new FileReader("src/data/databaselogin.json"));
             jsonObject = (JSONObject) object;
             login.put("hostname", (String) jsonObject.get("hostname"));
             login.put("port", (String) jsonObject.get("port"));
