@@ -48,8 +48,7 @@ public class Forms11Controller implements Initializable{
         try{
             Document document = new Document();
             document.setPageSize(new Rectangle(720, 420));
-            PdfWriter.getInstance(document, new FileOutputStream(
-                    "E:\\OneDrive - Hanoi University of Science and Technology\\Documents\\Eclipse Projects\\ProjectI\\src\\main\\export_pdf_result.pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream("src/main/export_pdf_result.pdf"));
             document.open();
             /**/
             PdfPTable a11PdfTable = new PdfPTable(3);

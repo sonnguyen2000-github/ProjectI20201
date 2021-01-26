@@ -212,7 +212,7 @@
    <right>
       <FlowPane prefHeight="297.0" prefWidth="344.0" BorderPane.alignment="CENTER">
          <children>
-            <TextArea editable="false" prefHeight="250.0" prefWidth="342.0" text="Hướng dẫn: &#10;- Mục Công ty có thể bỏ trống nếu là dự án cho công ty này&#10;- Vị trí công việc có 5 loại tương đương:&#10;   + &quot;Assistant&quot;: trợ lý, nhân viên&#10;   + &quot;Manager&quot;: quản lý kỹ thuật&#10;   + &quot;Leader&quot;: trưởng nhóm&#10;   + &quot;Tester&quot;: kiểm thử &#10;   + &quot;Business&quot;: kinh doanh, liên quan đến tài chính&#10;" wrapText="true">
+            <TextArea editable="false" prefHeight="273.0" prefWidth="342.0" text="Hướng dẫn: &#10;- Mục Công ty có thể bỏ trống nếu là dự án cho công ty này&#10;- Vị trí công việc có 5 loại tương đương:&#10;   + &quot;Assistant&quot;: trợ lý, nhân viên&#10;   + &quot;Manager&quot;: quản lý kỹ thuật&#10;   + &quot;Leader&quot;: trưởng nhóm&#10;   + &quot;Tester&quot;: kiểm thử &#10;   + &quot;Business&quot;: kinh doanh, liên quan đến tài chính&#10;" wrapText="true">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>

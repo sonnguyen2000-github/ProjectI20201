@@ -59,7 +59,7 @@ public class B11Controller implements Initializable{
                  * */
                 b11.setCvht_hoten(finalCvht.getCvht_hoten());
                 b11.setDiachi(finalCvht.getDiachi());
-                b11.setChucdanh(finalCvht.getChucdanh());
+                b11.setChucdanh(person.getTrinhdo());
                 rs = stmt.executeQuery(
                         "SELECT date_part('year', now()) - date_part('year', \"from\") + 1\n" + "FROM public.\"HDLD\"\n" + "WHERE mahdld like '%" + person.getMahdld() + "%';");
                 if(rs.next()){
@@ -94,7 +94,7 @@ public class B11Controller implements Initializable{
 
         try{
             JSONParser parser = new JSONParser();
-            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("E:/OneDrive - Hanoi University of Science and Technology/Documents/Eclipse Projects/ProjectI/src/data/admin.json"));
+            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("src/data/admin.json"));
 
             finalCvht.setCvht_hoten((String) jsonObject.get("name"));
             finalCvht.setChucdanh((String) jsonObject.get("position"));

@@ -253,7 +253,7 @@
    <right>
       <FlowPane prefHeight="364.0" prefWidth="418.0" BorderPane.alignment="CENTER">
          <children>
-            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" text="Hướng dẫn: " wrapText="true">
+            <TextArea editable="false" prefHeight="336.0" prefWidth="418.0" text="Hướng dẫn:&#10;- Nếu là bằng tốt nghiệp, tích vào ô tương ứng.&#10;- Nếu là bằng tốt nghiệp thì không cần đến chuyên môn&#10;- (Bắt buộc) Để 0 ở mục hiệu lực đến nếu có hiệu lực vô thời hạn&#10;- Mục Năm cấp và Hiệu lực đến điền năm" wrapText="true">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>

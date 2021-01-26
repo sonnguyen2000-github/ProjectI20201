@@ -48,17 +48,19 @@ public class C11Controller implements Initializable{
                     lichSu.setTenda(rs.getString(2));
                     lichSu.setVitri(rs.getString(7));
                     lichSu.setCn(rs.getString(3));
+                    lichSu.setCm(rs.getString(6));
                     lichSu.setFrom(rs.getInt(4));
                     lichSu.setTo(rs.getInt(8));
+                    lichSu.setCongty("this");
 
                     int month = new Random().nextInt(9) + 1;
                     c11.setTungay(c11.getTungay() + "\n" + lichSu.getFrom() + "-" + month + "-" + (new Random().nextInt(
                             30) + 1));
                     c11.setDenngay(
-                            c11.getDenngay() + "\n" + lichSu.getFrom() + "-" + (month + (month % 2 == 0 ? 2 : 3)) + "-" + (new Random().nextInt(
-                                    30) + 1));
+                            c11.getDenngay() + "\n--------\n" + lichSu.getFrom() + "-" + (month + (month % 2 == 0 ? 2 : 3)) + "-" + (new Random().nextInt(
+                                    30) + 1) + "\n\n\n");
 
-                    c11.setKncm(c11.getKncm() + "\n" + lichSu);
+                    c11.setKncm(c11.getKncm() + "\n--------\n" + lichSu);
                 }
 
                 c11Table.getItems().add(c11);

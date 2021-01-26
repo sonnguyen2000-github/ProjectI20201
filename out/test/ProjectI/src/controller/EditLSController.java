@@ -116,6 +116,8 @@ public class EditLSController implements Initializable{
                     rs.insertRow();
                     //
                     LichSu temp = new LichSu(tenda_new, vitrict_new, cn, cm, ctfrom, ctto);
+                    temp.setCongty("this");
+
                     this.setLS(id, temp);
                     this.setAddNew(false);
                 }else{
