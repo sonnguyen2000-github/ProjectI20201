@@ -16,4 +16,7 @@ File PDF sau khi được xuất ra sẽ nằm cùng thư mục với file main
 <br>
 <br>
 <strong>KHÔNG CHẠY FILE TEST</strong>
+<br>
+File test được dùng để thử nghiệm những chức năng mới, bạn có thể dùng để kiểm tra các tính năng nếu đã hiểu rõ chương
+trình
 
