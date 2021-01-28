@@ -54,8 +54,9 @@ public class C11Controller implements Initializable{
                     lichSu.setCongty("this");
 
                     int month = new Random().nextInt(9) + 1;
-                    c11.setTungay(c11.getTungay() + "\n" + lichSu.getFrom() + "-" + month + "-" + (new Random().nextInt(
-                            30) + 1));
+                    c11.setTungay(
+                            c11.getTungay() + "\n--------\n" + lichSu.getFrom() + "-" + month + "-" + (new Random().nextInt(
+                                    30) + 1) + "\n\n\n");
                     c11.setDenngay(
                             c11.getDenngay() + "\n--------\n" + lichSu.getFrom() + "-" + (month + (month % 2 == 0 ? 2 : 3)) + "-" + (new Random().nextInt(
                                     30) + 1) + "\n\n\n");

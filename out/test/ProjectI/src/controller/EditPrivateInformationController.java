@@ -76,9 +76,9 @@ public class EditPrivateInformationController implements Initializable{
         }
 
         rs.updateDate(2, Date.valueOf(birthday));
-        rs.updateString(4, sex);
-        rs.updateString(3, address);
-        rs.updateString(5, origin);
+        rs.updateString(4, sex + "");
+        rs.updateString(3, address + "");
+        rs.updateString(5, origin + "");
         //
         if(empty){
             rs.insertRow();

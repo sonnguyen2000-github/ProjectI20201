@@ -86,7 +86,7 @@ public class EditEmployeeController implements Initializable{
             if(adding){
                 rs.insertRow();
             }else{
-                 rs.updateRow();
+                rs.updateRow();
             }
             //
             rs = stmt.executeQuery(
@@ -97,10 +97,10 @@ public class EditEmployeeController implements Initializable{
                 rs.next();
             }
             rs.updateString(1, id);
-            rs.updateString(2, trinhdo_new);
-            rs.updateString(3, chucvu_new);
-            rs.updateString(4, hdld);
-            rs.updateString(5, hoten_new);
+            rs.updateString(2, trinhdo_new + "");
+            rs.updateString(3, chucvu_new + "");
+            rs.updateString(4, hdld + "");
+            rs.updateString(5, hoten_new + "");
             if(adding){
                 rs.insertRow();
                 this.setPerson(new Person(id, hoten_new, trinhdo_new, chucvu_new, hdld, Date.valueOf(from_),
@@ -115,7 +115,7 @@ public class EditEmployeeController implements Initializable{
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
-            alert.setHeaderText("ERROR");
+            alert.setHeaderText("Fields can not be empty.");
             alert.setContentText("");
             alert.showAndWait();
         }
